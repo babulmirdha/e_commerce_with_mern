@@ -1,6 +1,9 @@
 
+@host = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjgyMjg1MzNhZjU5NzJhMzIxZTA4YTBiIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIn0sImlhdCI6MTc0NzEyMDQxMiwiZXhwIjoxNzQ3MTI0MDEyfQ.mhbZeNnuNJZZZgnR4gYD2UHtWpjact2-bXTBGbW1g-I
+
 ### User Sigup
-POST http://localhost:3000/api/auth/signup
+POST {{host}}/api/auth/signup
 Content-Type: application/json
 
 {
@@ -11,7 +14,7 @@ Content-Type: application/json
 
 
 ### User Sigin
-POST http://localhost:3000/api/auth/login
+POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
@@ -21,8 +24,8 @@ Content-Type: application/json
 
 
 ### Fetch ME
-GET http://localhost:3000/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjgyMjg1MzNhZjU5NzJhMzIxZTA4YTBiIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIn0sImlhdCI6MTc0NzExMjgwNywiZXhwIjoxNzQ3MTE2NDA3fQ.zDPCs1ZYVZOwHDrqowICyEmuFKwKQpMEZVnd9J906ME
+GET {{host}}/api/auth/me
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 

@@ -1,0 +1,39 @@
+@host = http://localhost:3000
+
+### Create Product
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "price": 100
+}
+
+### Get All Products
+GET {{host}}/api/products
+
+
+### Get Product By Id
+GET {{host}}/api/products/67f94922f814a80491b98ce6
+
+
+### Update Product
+PUT {{host}}/api/products/67f94922f814a80491b98ce6
+Content-Type: application/json
+
+{
+    "name": "iPhone",
+    "price": 200
+}
+
+### Partial Update Product 
+PATCH  {{host}}/api/products/67f94922f814a80491b98ce6
+Content-Type: application/json
+
+{
+    "price": 1000
+}
+
+
+### Delete Product
+DELETE  {{host}}/api/products/1

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'your_jwt_secret_key'; // should match the one in userRoutes.js
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY; // should match the one in userRoutes.js
 
 module.exports = function (req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -13,7 +13,7 @@ module.exports = function (req, res, next) {
     const token = authHeader.split(' ')[1];
 
     try {
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET_KEY);
         req.user = decoded.user; // save user data in request
         next();
     } catch (err) {

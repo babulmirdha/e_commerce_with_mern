@@ -8,7 +8,7 @@ const auth = require('../middlewares/auth');
 const router = express.Router();
 
 // Secret key for JWT (you can put it in .env later)
-const JWT_SECRET = 'your_jwt_secret_key'; 
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY; 
 
 // ✅ Signup Route
 router.post('/signup', async (req, res) => {
@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
         // Sign token
         jwt.sign(
             payload,
-            JWT_SECRET,
+            JWT_SECRET_KEY,
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
