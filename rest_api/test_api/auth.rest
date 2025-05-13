@@ -1,0 +1,28 @@
+
+### User Sigup
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "123456"
+}
+
+
+### User Sigin
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "john@example.com",
+    "password": "123456"
+}
+
+
+### Fetch ME
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjgyMjg1MzNhZjU5NzJhMzIxZTA4YTBiIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIn0sImlhdCI6MTc0NzExMjgwNywiZXhwIjoxNzQ3MTE2NDA3fQ.zDPCs1ZYVZOwHDrqowICyEmuFKwKQpMEZVnd9J906ME
+Content-Type: application/json
+
+
