@@ -4,6 +4,8 @@ module.exports = function authorizeRoles(...allowedRoles) {
   return (req, res, next) => {
     const user = req.user;
 
+    console.log(user.roles)
+
     if (!user || !user.roles || !Array.isArray(user.roles)) {
       return res.status(403).json({ status: "error", message: "Access denied: no roles assigned." });
     }

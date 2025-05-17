@@ -63,7 +63,8 @@ router.post('/login', async (req, res) => {
             user: {
                 id: user.id,
                 name: user.name,
-                email: user.email
+                email: user.email,
+                roles: user.roles // <-- make sure this exists
             }
         };
 
