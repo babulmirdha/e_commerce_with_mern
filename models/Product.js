@@ -1,18 +1,13 @@
-// models/Product.js
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true, // ✅ Enforce uniqueness
-    trim: true
-  },
-  price: mongoose.Schema.Types.Decimal128,
-  description: String,
-  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }]
-});
+  name: { type: String, required: true, unique: true, trim: true },
+  price: { type: mongoose.Schema.Types.Decimal128, required: true },
+  description: { type: String },
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
+  stock: { type: Number, default: 0 },
+  images: [{ type: String }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }]
+}, { timestamps: true });
 
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
-
+module.exports = mongoose.model("Product", productSchema);
