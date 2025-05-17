@@ -1,11 +1,12 @@
 // routes/productRoutes.js
 const express = require("express");
 const router = express.Router();
-const auth = require('../middlewares/auth');
+const authenticate = require('../middlewares/authenticate');
+const authorizeRoles = require('../middlewares/authorizeRoles');
 const Product = require("../models/Product"); 
 
 // Create a Product
-router.post("/", auth , async (req, res) => {
+router.post("/", authenticate, authorizeRoles("admin") , async (req, res) => {
   try {
     const { name, price, description } = req.body;
     const newProduct = new Product({ name, price, description });
@@ -52,7 +53,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // 📌 Update a Product
-router.put("/:id", auth, async (req, res) => {
+router.put("/:id", authenticate, authorizeRoles("admin"), async (req, res) => {
   try {
     const { name, price, description } = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -74,7 +75,7 @@ router.put("/:id", auth, async (req, res) => {
 });
 
 // 📌 Delete a Product
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", authenticate, authorizeRoles("admin"), async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
     if (!deletedProduct) {

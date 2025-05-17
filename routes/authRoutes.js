@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const auth = require('../middlewares/auth');
+const authenticate = require('../middlewares/authenticate');
 
 
 const router = express.Router();
@@ -26,7 +27,8 @@ router.post('/signup', async (req, res) => {
         user = new User({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+             roles: ["customer"] // default role
         });
 
         await user.save();
@@ -65,6 +67,7 @@ router.post('/login', async (req, res) => {
             }
         };
 
+        console.log(JWT_SECRET_KEY);
         // Sign token
         jwt.sign(
             payload,
@@ -84,7 +87,7 @@ router.post('/login', async (req, res) => {
 
 
 // ✅ Protected Route to Get Logged-In User
-router.get('/me', auth, async (req, res) => {
+router.get('/me', authenticate, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password'); // exclude password
         if (!user) {
